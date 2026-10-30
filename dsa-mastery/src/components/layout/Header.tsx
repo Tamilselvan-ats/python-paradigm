@@ -21,7 +21,6 @@ export default function Header() {
   return (
     <header
       className="sticky top-0 z-30 h-16 bg-background/80 backdrop-blur-md border-b border-card-border flex items-center justify-between px-6"
-      style={{ marginLeft: sidebarOpen ? 256 : 72 }}
     >
       {/* Search Bar */}
       <form onSubmit={handleSearch} className="flex-1 max-w-xl">

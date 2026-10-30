@@ -1,5 +1,6 @@
 'use client';
 
+import React, { Suspense } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import ThemeProvider from './ThemeProvider';
@@ -12,12 +13,16 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <ThemeProvider>
       <div className="flex min-h-screen">
-        <Sidebar />
+        <Suspense fallback={<div className="w-64 bg-sidebar-bg h-full" />}>
+          <Sidebar />
+        </Suspense>
         <div
           className="flex-1 flex flex-col transition-all duration-300"
           style={{ marginLeft: sidebarOpen ? 256 : 72 }}
         >
-          <Header />
+          <Suspense fallback={<div className="h-16 bg-background" />}>
+            <Header />
+          </Suspense>
           <main className="flex-1 p-6 overflow-y-auto">{children}</main>
         </div>
       </div>
